@@ -1,0 +1,119 @@
+{
+  "level": "A1",
+  "description": "Beginner level - 1AM (First Year Middle School)",
+  "curriculum_alignment": "Ministry of National Education - Curriculum of English for Middle School Education",
+  "topics": [
+    {
+      "id": "subject_pronouns",
+      "name": "Subject Pronouns",
+      "description": "I, you, he, she, it, we, they",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "present_simple",
+      "name": "Present Simple",
+      "description": "Regular verb conjugation in present tense",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "be_verb",
+      "name": "Be Verb (am, is, are)",
+      "description": "Using be verb in affirmative, negative, and interrogative forms",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "articles",
+      "name": "Articles (a, an, the)",
+      "description": "Using definite and indefinite articles correctly",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "possessive_adjectives",
+      "name": "Possessive Adjectives",
+      "description": "my, your, his, her, its, our, their",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "family_vocabulary",
+      "name": "Family Members",
+      "description": "mother, father, sister, brother, etc.",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "there_is_are",
+      "name": "There is/are",
+      "description": "Existence and location",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "prepositions_place",
+      "name": "Prepositions of Place",
+      "description": "in, on, under, next to, between, behind",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "present_continuous",
+      "name": "Present Continuous",
+      "description": "Actions happening now",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "hobbies_vocabulary",
+      "name": "Hobbies and Activities",
+      "description": "sports, games, creative activities",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "daily_routine",
+      "name": "Daily Routine",
+      "description": "waking up, going to school, etc.",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "time_expressions",
+      "name": "Time Expressions",
+      "description": "o'clock, half past, quarter to, etc.",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "countable_uncountable",
+      "name": "Countable/Uncountable Nouns",
+      "description": "some, any, much, many, a lot of",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "food_vocabulary",
+      "name": "Food and Meals",
+      "description": "breakfast, lunch, dinner, food items",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "how_much_many",
+      "name": "How much/How many",
+      "description": "Asking about quantity and price",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "numbers",
+      "name": "Numbers (1-100)",
+      "description": "Cardinal and ordinal numbers",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "level": "B2",
+  "description": "Upper-Intermediate level - 4AM (Fourth Year Middle School)",
+  "curriculum_alignment": "Ministry of National Education - Curriculum of English for Middle School Education",
+  "topics": [
+    {
+      "id": "conditionals_type2",
+      "name": "Second Conditional",
+      "description": "If + past, would + infinitive (unreal/hypothetical)",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "conditionals_mixed",
+      "name": "Mixed Conditionals",
+      "description": "Mixing type 1 and type 2",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "passive_voice_all_tenses",
+      "name": "Passive Voice (All Tenses)",
+      "description": "Passive in present, past, future, perfect",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "reported_speech_intro",
+      "name": "Reported Speech (Introduction)",
+      "description": "Reporting statements",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "reported_speech_questions",
+      "name": "Reported Questions",
+      "description": "Reporting yes/no and wh- questions",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "modals_deduction",
+      "name": "Modals of Deduction",
+      "description": "must be, can't be, might be, could be",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "present_perfect_continuous",
+      "name": "Present Perfect Continuous",
+      "description": "Actions started in the past continuing now",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "future_perfect",
+      "name": "Future Perfect",
+      "description": "will have + past participle",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "wish_clauses",
+      "name": "Wish Clauses",
+      "description": "I wish I were..., If only...",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "relative_clauses",
+      "name": "Relative Clauses",
+      "description": "who, which, that, where, when",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "advanced_connectors",
+      "name": "Advanced Connectors",
+      "description": "despite, in spite of, however, nevertheless",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "causative",
+      "name": "Causative Form",
+      "description": "have/get something done",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "review_tenses",
+      "name": "All Tenses Review",
+      "description": "Comprehensive tense review for BEM",
+      "unit": "8",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "exam_grammar",
+      "name": "BEM Grammar Review",
+      "description": "Key grammar for exam preparation",
+      "unit": "8",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "formal_writing",
+      "name": "Formal Writing",
+      "description": "Formal letters, essays, reports",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "idioms_expressions",
+      "name": "Idioms and Expressions",
+      "description": "Common English idioms",
+      "unit": "1",
+      "exercise_types": ["matching", "fill_in_blank", "multiple_choice"]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "level": "B1",
+  "description": "Intermediate level - 3AM (Third Year Middle School)",
+  "curriculum_alignment": "Ministry of National Education - Curriculum of English for Middle School Education",
+  "topics": [
+    {
+      "id": "present_perfect_vs_past",
+      "name": "Present Perfect vs Past Simple",
+      "description": "When to use each tense",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "present_perfect_usage",
+      "name": "Present Perfect Usage",
+      "description": "Experience, duration, recent events",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "past_continuous",
+      "name": "Past Continuous",
+      "description": "Actions in progress in the past",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "past_continuous_vs_simple",
+      "name": "Past Continuous vs Past Simple",
+      "description": "Interrupted actions vs completed actions",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "passive_voice_intro",
+      "name": "Passive Voice (Introduction)",
+      "description": "be + past participle",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "comparatives_review",
+      "name": "Comparatives and Superlatives",
+      "description": "Review and extension",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "irregular_comparatives",
+      "name": "Irregular Comparatives",
+      "description": "good-better-best, bad-worse-worst",
+      "unit": "4",
+      "exercise_types": ["matching", "fill_in_blank", "multiple_choice"]
+    },
+    {
+      "id": "food_culture",
+      "name": "Food and Culture",
+      "description": "Algerian cuisine, traditions",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "modal_review",
+      "name": "Modal Verbs Review",
+      "description": "can, could, may, might, must, should",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "future_forms",
+      "name": "Future Forms",
+      "description": "will, going to, present continuous for future",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "conditionals_type0",
+      "name": "Zero Conditional",
+      "description": "If + present, present (general truths)",
+      "unit": "8",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "conditionals_type1",
+      "name": "First Conditional",
+      "description": "If + present, will + infinitive (real future)",
+      "unit": "8",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "phrasal_verbs",
+      "name": "Phrasal Verbs",
+      "description": "Common phrasal verbs (get up, look after, etc.)",
+      "unit": "1",
+      "exercise_types": ["matching", "fill_in_blank", "multiple_choice"]
+    },
+    {
+      "id": "connectors",
+      "name": "Connectors",
+      "description": "and, but, so, because, although, however",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "used_to",
+      "name": "Used to",
+      "description": "Past habits and states",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "quantifiers_review",
+      "name": "Quantifiers Review",
+      "description": "some, any, much, many, a lot of, little, few",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    }
+  ]
+}

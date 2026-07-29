@@ -1,0 +1,119 @@
+{
+  "level": "A2",
+  "description": "Elementary level - 2AM (Second Year Middle School)",
+  "curriculum_alignment": "Ministry of National Education - Curriculum of English for Middle School Education",
+  "topics": [
+    {
+      "id": "past_simple_regular",
+      "name": "Past Simple (Regular Verbs)",
+      "description": "Regular past tense with -ed",
+      "unit": "1",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "past_simple_irregular",
+      "name": "Past Simple (Irregular Verbs)",
+      "description": "Common irregular past tense forms",
+      "unit": "2",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching", "error_correction"]
+    },
+    {
+      "id": "going_to_future",
+      "name": "Going to Future",
+      "description": "Plans and intentions",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "will_future",
+      "name": "Will Future",
+      "description": "Predictions and spontaneous decisions",
+      "unit": "3",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "modal_can",
+      "name": "Modal Verbs (can/could)",
+      "description": "Ability and possibility",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "modal_must",
+      "name": "Modal Verbs (must/have to)",
+      "description": "Obligation and necessity",
+      "unit": "4",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "should_advice",
+      "name": "Should/Shouldn't",
+      "description": "Giving advice",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "body_parts",
+      "name": "Body Parts",
+      "description": "Head, shoulders, knees, toes, etc.",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "illness_vocabulary",
+      "name": "Health and Illness",
+      "description": "cold, fever, headache, etc.",
+      "unit": "5",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "imperatives",
+      "name": "Imperatives",
+      "description": "Commands and instructions",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "directions",
+      "name": "Asking for Directions",
+      "description": "turn left/right, go straight, etc.",
+      "unit": "6",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building"]
+    },
+    {
+      "id": "present_perfect_intro",
+      "name": "Present Perfect (Introduction)",
+      "description": "Have/has + past participle",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "error_correction"]
+    },
+    {
+      "id": "technology_vocabulary",
+      "name": "Technology",
+      "description": "computer, internet, smartphone, etc.",
+      "unit": "7",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "comparatives",
+      "name": "Comparatives",
+      "description": "bigger than, more expensive than, etc.",
+      "unit": "8",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "sentence_building", "error_correction"]
+    },
+    {
+      "id": "environment_vocabulary",
+      "name": "Environment",
+      "description": "pollution, recycling, climate, etc.",
+      "unit": "8",
+      "exercise_types": ["fill_in_blank", "multiple_choice", "matching"]
+    },
+    {
+      "id": "past_irregular_common",
+      "name": "Common Irregular Verbs",
+      "description": "go-went, eat-ate, see-saw, etc.",
+      "unit": "2",
+      "exercise_types": ["matching", "fill_in_blank", "multiple_choice"]
+    }
+  ]
+}
