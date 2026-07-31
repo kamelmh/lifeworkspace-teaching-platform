@@ -15,10 +15,6 @@ import sys
 import io
 from datetime import datetime, date
 
-# Add Exercise Generator to path
-EXERCISE_GEN_PATH = os.path.join(os.path.dirname(__file__), "..", "Exercise_Generator")
-sys.path.insert(0, EXERCISE_GEN_PATH)
-
 # --- Page Config ---
 st.set_page_config(
     page_title="SIS - Student Information System",
