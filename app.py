@@ -242,6 +242,27 @@ else:
          "📈 Grade Book", "📄 Reports"]
     )
 
+# Quick Start Guide
+with st.sidebar:
+    st.divider()
+    with st.expander("📚 Quick Start (5 steps)", expanded=True):
+        st.markdown("""
+        **1️⃣ Explore Dashboard**
+        → See sample KPIs
+
+        **2️⃣ View Students**
+        → 5 pre-loaded students
+
+        **3️⃣ Generate Exercises**
+        → Assessments → Exercise Generator
+
+        **4️⃣ Print Assessment**
+        → Assessments → Print tab
+
+        **5️⃣ Enter Grades**
+        → Grade Book → Enter Grades
+        """)
+
 # --- Constants ---
 LEVELS = ["1AM", "2AM", "3AM", "4AM"]
 GENDERS = ["M", "F"]
