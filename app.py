@@ -652,7 +652,7 @@ elif page == "📚 Classes":
 elif page == "📝 Assessments":
     st.title("📝 Assessment Engine")
     
-    tab1, tab2, tab3 = st.tabs(["📋 List Assessments", "➕ Create Assessment", "🔗 Exercise Generator"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📋 List Assessments", "➕ Create Assessment", "🔗 Exercise Generator", "🖨️ Print"])
     
     with tab1:
         if st.session_state.assessments:
@@ -805,6 +805,45 @@ elif page == "📝 Assessments":
                             st.warning("No exercises generated.")
                     else:
                         st.error("Failed to generate exercises.")
+
+    with tab4:
+        st.subheader("🖨️ Print Assessments")
+
+        if st.session_state.assessments:
+            assess_select = st.selectbox(
+                "Select Assessment to Print",
+                list(st.session_state.assessments.keys()),
+                format_func=lambda x: st.session_state.assessments[x].get("title", x),
+                key="print_assess_select"
+            )
+
+            if assess_select:
+                assess = st.session_state.assessments[assess_select]
+                st.info(f"**{assess.get('title')}** — {len(assess.get('items', []))} items — {assess.get('time_limit_minutes', 45)} min")
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    txt = generate_printable_assessment(assess_select)
+                    st.download_button(
+                        "📄 Download Student Version",
+                        txt,
+                        file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_student.txt",
+                        mime="text/plain",
+                        key="download_student"
+                    )
+
+                with col2:
+                    txt = generate_printable_answer_key(assess_select)
+                    st.download_button(
+                        "🔑 Download Answer Key",
+                        txt,
+                        file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_answer_key.txt",
+                        mime="text/plain",
+                        key="download_answer_key"
+                    )
+        else:
+            st.info("No assessments to print. Create one first or generate exercises.")
 
 # --- Grade Book ---
 elif page == "📈 Grade Book":
