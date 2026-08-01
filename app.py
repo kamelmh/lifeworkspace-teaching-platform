@@ -68,8 +68,81 @@ def auto_populate_demo_data():
         st.session_state.classes = DEMO_CLASSES.copy()
         save_data("classes.json", st.session_state.classes)
 
+def generate_demo_assessments():
+    """Generate demo assessments with exercises from Exercise Generator."""
+    if not st.session_state.assessments:
+        try:
+            from exercise_generator import ExerciseGenerator
+            gen = ExerciseGenerator()
+
+            # A1 Grammar Quiz
+            a1_grammar = gen.generate_for_level("A1", "fill_in_blank", 10)
+            a1_mc = gen.generate_for_level("A1", "multiple_choice", 10)
+            a1_items = []
+            for r in (a1_grammar + a1_mc):
+                if "error" not in r:
+                    for ex in r.get("exercises", []):
+                        a1_items.append({
+                            "question": ex.get("question", ex.get("sentence", "")),
+                            "answer": ex.get("answer", ""),
+                            "options": ex.get("options", []),
+                            "type": ex.get("type", "fill_in_blank"),
+                            "topic": r.get("topic", ""),
+                            "points": 1,
+                        })
+
+            # A2 Grammar Quiz
+            a2_grammar = gen.generate_for_level("A2", "fill_in_blank", 10)
+            a2_mc = gen.generate_for_level("A2", "multiple_choice", 10)
+            a2_items = []
+            for r in (a2_grammar + a2_mc):
+                if "error" not in r:
+                    for ex in r.get("exercises", []):
+                        a2_items.append({
+                            "question": ex.get("question", ex.get("sentence", "")),
+                            "answer": ex.get("answer", ""),
+                            "options": ex.get("options", []),
+                            "type": ex.get("type", "fill_in_blank"),
+                            "topic": r.get("topic", ""),
+                            "points": 1,
+                        })
+
+            st.session_state.assessments = {
+                "ASS001": {
+                    "title": "A1 Grammar Quiz",
+                    "type": "grammar",
+                    "level": "1AM",
+                    "items": a1_items[:20],
+                    "total_points": 20,
+                    "time_limit_minutes": 45,
+                    "created_date": str(date.today()),
+                },
+                "ASS002": {
+                    "title": "A1 Vocabulary Test",
+                    "type": "vocabulary",
+                    "level": "1AM",
+                    "items": a1_items[:20],
+                    "total_points": 20,
+                    "time_limit_minutes": 30,
+                    "created_date": str(date.today()),
+                },
+                "ASS003": {
+                    "title": "A2 Grammar Quiz",
+                    "type": "grammar",
+                    "level": "2AM",
+                    "items": a2_items[:20],
+                    "total_points": 20,
+                    "time_limit_minutes": 45,
+                    "created_date": str(date.today()),
+                },
+            }
+            save_data("assessments.json", st.session_state.assessments)
+        except Exception:
+            pass  # Silently fail if Exercise Generator not available
+
 # Auto-populate demo data on first login
 auto_populate_demo_data()
+generate_demo_assessments()
 
 # --- Auth System ---
 def check_login(username, password):
