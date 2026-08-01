@@ -279,6 +279,96 @@ except ImportError:
     GEN_LEVELS = ["A1", "A2", "B1", "B2"]
 
 # --- PDF Export ---
+def generate_printable_assessment(assess_id):
+    """Generate printable assessment without answers."""
+    assess = st.session_state.assessments.get(assess_id, {})
+    items = assess.get("items", [])
+
+    lines = []
+    lines.append("=" * 60)
+    lines.append("".center(60))
+    lines.append("ENGLISH LANGUAGE ASSESSMENT".center(60))
+    lines.append("".center(60))
+    lines.append("=" * 60)
+    lines.append(f"Level: {assess.get('level', 'N/A')}")
+    lines.append(f"Time: {assess.get('time_limit_minutes', 45)} minutes")
+    lines.append(f"Total: {assess.get('total_points', 20)} points")
+    lines.append("")
+    lines.append("Name: _________________________    Date: ___________")
+    lines.append("")
+
+    # Group by type
+    fill_items = [i for i in items if i.get("type") == "fill_in_blank"]
+    mc_items = [i for i in items if i.get("type") == "multiple_choice"]
+
+    if fill_items:
+        lines.append(f"Section A: Fill in the Blanks ({len(fill_items)} points)")
+        lines.append("-" * 60)
+        lines.append("")
+        for idx, item in enumerate(fill_items, 1):
+            lines.append(f"{idx}. {item.get('question', '')}")
+            lines.append("")
+
+    if mc_items:
+        lines.append(f"Section B: Multiple Choice ({len(mc_items)} points)")
+        lines.append("-" * 60)
+        lines.append("")
+        for idx, item in enumerate(mc_items, len(fill_items) + 1):
+            options = item.get("options", [])
+            opts = "  ".join([f"{chr(97+i)}) {o}" for i, o in enumerate(options)])
+            lines.append(f"{idx}. {item.get('question', '')}")
+            lines.append(f"   {opts}")
+            lines.append("")
+
+    lines.append("=" * 60)
+    lines.append("GOOD LUCK!".center(60))
+    lines.append("=" * 60)
+
+    return "\n".join(lines)
+
+
+def generate_printable_answer_key(assess_id):
+    """Generate printable answer key with answers."""
+    assess = st.session_state.assessments.get(assess_id, {})
+    items = assess.get("items", [])
+
+    lines = []
+    lines.append("=" * 60)
+    lines.append("ANSWER KEY".center(60))
+    lines.append(f"{assess.get('title', 'Assessment')} - {assess.get('level', 'N/A')}".center(60))
+    lines.append("=" * 60)
+    lines.append("")
+
+    # Group by type
+    fill_items = [i for i in items if i.get("type") == "fill_in_blank"]
+    mc_items = [i for i in items if i.get("type") == "multiple_choice"]
+
+    if fill_items:
+        lines.append("Section A: Fill in the Blanks")
+        lines.append("-" * 60)
+        for idx, item in enumerate(fill_items, 1):
+            lines.append(f"{idx}. {item.get('answer', 'N/A')}")
+        lines.append("")
+
+    if mc_items:
+        lines.append("Section B: Multiple Choice")
+        lines.append("-" * 60)
+        for idx, item in enumerate(mc_items, len(fill_items) + 1):
+            options = item.get("options", [])
+            answer = item.get("answer", "")
+            # Find option index
+            if answer in options:
+                opt_idx = options.index(answer)
+                lines.append(f"{idx}. {chr(97+opt_idx)}) {answer}")
+            else:
+                lines.append(f"{idx}. {answer}")
+        lines.append("")
+
+    lines.append("=" * 60)
+
+    return "\n".join(lines)
+
+
 def generate_student_report(student_id, student, grades):
     """Generate a simple text report for a student"""
     report = []
@@ -577,6 +667,28 @@ elif page == "📝 Assessments":
                         st.write("**Items Preview:**")
                         for i, item in enumerate(assess["items"][:3], 1):
                             st.write(f"  {i}. {item.get('question', item.get('sentence', 'N/A'))}")
+                        
+                        st.divider()
+                        st.write("**Print & Export:**")
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            printable = generate_printable_assessment(assess_id)
+                            st.download_button(
+                                "🖨️ Print Assessment (No Answers)",
+                                printable,
+                                file_name=f"assessment_{assess.get('title', assess_id).replace(' ', '_')}.txt",
+                                mime="text/plain",
+                                key=f"print_assess_{assess_id}",
+                            )
+                        with col2:
+                            answer_key = generate_printable_answer_key(assess_id)
+                            st.download_button(
+                                "🔑 Print Answer Key",
+                                answer_key,
+                                file_name=f"answer_key_{assess.get('title', assess_id).replace(' ', '_')}.txt",
+                                mime="text/plain",
+                                key=f"print_key_{assess_id}",
+                            )
                     
                     if role == "admin" and st.button(f"🗑️ Delete", key=f"del_assess_{assess_id}"):
                         del st.session_state.assessments[assess_id]
