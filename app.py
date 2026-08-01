@@ -14,6 +14,7 @@ import os
 import sys
 import io
 from datetime import datetime, date
+from fpdf import FPDF
 
 # --- Demo Data ---
 DEMO_STUDENTS = {
@@ -33,7 +34,8 @@ DEMO_CLASSES = {
 st.set_page_config(
     page_title="SIS - Student Information System",
     page_icon="🏫",
-    layout="wide",
+    layout="centered",  # Better for mobile devices
+    initial_sidebar_state="expanded",
 )
 
 # --- Data Storage ---
@@ -58,6 +60,17 @@ for key, filename in [("students", "students.json"), ("classes", "classes.json")
                        ("users", "users.json")]:
     if key not in st.session_state:
         st.session_state[key] = load_data(filename)
+
+# --- Usage Tracking ---
+if "usage_stats" not in st.session_state:
+    st.session_state.usage_stats = {
+        "exercises_generated": 0,
+        "assessments_created": 0,
+        "grades_entered": 0,
+        "reports_downloaded": 0,
+        "students_added": 0,
+        "pdfs_generated": 0,
+    }
 
 def auto_populate_demo_data():
     """Load demo data if no data files exist."""
@@ -153,8 +166,8 @@ def generate_demo_assessments():
                 },
             }
             save_data("assessments.json", st.session_state.assessments)
-        except Exception:
-            pass  # Silently fail if Exercise Generator not available
+        except Exception as e:
+            st.warning(f"Could not generate demo assessments: {e}")
 
 # Auto-populate demo data on first login
 auto_populate_demo_data()
@@ -258,7 +271,7 @@ else:
          "📈 Grade Book", "📄 Reports"]
     )
 
-# Quick Start Guide
+# Quick Start Guide + Export Backup
 with st.sidebar:
     st.divider()
     with st.expander("📚 Quick Start (5 steps)", expanded=True):
@@ -278,10 +291,52 @@ with st.sidebar:
         **5️⃣ Enter Grades**
         → Grade Book → Enter Grades
         """)
+    
+    # Prominent Export Backup Button
+    st.divider()
+    export_data = {
+        "students": st.session_state.students,
+        "classes": st.session_state.classes,
+        "assessments": st.session_state.assessments,
+        "grades": st.session_state.grades,
+        "export_date": str(datetime.now()),
+    }
+    st.download_button(
+        "📥 Export Backup (JSON)",
+        json.dumps(export_data, indent=2, ensure_ascii=False),
+        file_name=f"sis_backup_{date.today()}.json",
+        mime="application/json",
+        key="sidebar_export",
+        use_container_width=True,
+    )
+    
+    # Feedback Link
+    st.divider()
+    st.markdown("📝 **Send Feedback**")
+    st.markdown("[Google Form](https://docs.google.com/forms/d/1FAIpQLSdPlaceholder/viewform)")
+    st.caption("Help us improve the system")
 
 # --- Constants ---
 LEVELS = ["1AM", "2AM", "3AM", "4AM"]
 GENDERS = ["M", "F"]
+
+# --- Bilingual Labels ---
+LABELS = {
+    "dashboard": {"en": "📊 Dashboard", "ar": "لوحة التحكم"},
+    "students": {"en": "👨‍🎓 Students", "ar": "الطلاب"},
+    "classes": {"en": "📚 Classes", "ar": "الفصول"},
+    "assessments": {"en": "📝 Assessments", "ar": "التقييمات"},
+    "grade_book": {"en": "📈 Grade Book", "ar": "سجل الدرجات"},
+    "reports": {"en": "📄 Reports", "ar": "التقارير"},
+    "users": {"en": "👥 Users", "ar": "المستخدمون"},
+    "settings": {"en": "⚙️ Settings", "ar": "الإعدادات"},
+    "welcome": {"en": "Welcome", "ar": "مرحباً"},
+    "role": {"en": "Role", "ar": "الدور"},
+    "logout": {"en": "Logout", "ar": "تسجيل الخروج"},
+    "quick_start": {"en": "Quick Start (5 steps)", "ar": "البدء السريع (5 خطوات)"},
+    "export_backup": {"en": "📥 Export Backup", "ar": "تصدير النسخة الاحتياطية"},
+    "feedback": {"en": "📝 Send Feedback", "ar": "إرسال الملاحظات"},
+}
 
 # --- Exercise Generator Integration ---
 try:
@@ -385,6 +440,159 @@ def generate_printable_answer_key(assess_id):
     return "\n".join(lines)
 
 
+# --- PDF Export ---
+class AssessmentPDF(FPDF):
+    """Custom PDF class for assessments."""
+    
+    def header(self):
+        self.set_font("Helvetica", "B", 14)
+        self.cell(0, 10, "English Language Assessment", align="C", new_x="LMARGIN", new_y="NEXT")
+        self.ln(5)
+    
+    def footer(self):
+        self.set_y(-15)
+        self.set_font("Helvetica", "I", 8)
+        self.cell(0, 10, f"Page {self.page_no()}/{{nb}}", align="C")
+
+
+def generate_pdf_assessment(assess_id):
+    """Generate a printable PDF assessment without answers."""
+    assess = st.session_state.assessments.get(assess_id, {})
+    items = assess.get("items", [])
+    
+    pdf = AssessmentPDF()
+    pdf.alias_nb_pages()
+    pdf.add_page()
+    
+    # Assessment info
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 8, f"Level: {assess.get('level', 'N/A')}", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 8, f"Time: {assess.get('time_limit_minutes', 45)} minutes", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 8, f"Total: {assess.get('total_points', 20)} points", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(5)
+    
+    # Student info
+    pdf.set_font("Helvetica", "", 11)
+    pdf.cell(0, 8, "Name: _________________________    Date: ___________", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(10)
+    
+    # Group by type
+    fill_items = [i for i in items if i.get("type") == "fill_in_blank"]
+    mc_items = [i for i in items if i.get("type") == "multiple_choice"]
+    match_items = [i for i in items if i.get("type") == "matching"]
+    sent_items = [i for i in items if i.get("type") == "sentence_building"]
+    
+    if fill_items:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 8, f"Section A: Fill in the Blanks ({len(fill_items)} points)", new_x="LMARGIN", new_y="NEXT")
+        pdf.set_draw_color(0, 0, 0)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        
+        pdf.set_font("Helvetica", "", 10)
+        for idx, item in enumerate(fill_items, 1):
+            pdf.multi_cell(0, 6, f"{idx}. {item.get('question', '')}")
+            pdf.ln(3)
+        pdf.ln(5)
+    
+    if mc_items:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 8, f"Section B: Multiple Choice ({len(mc_items)} points)", new_x="LMARGIN", new_y="NEXT")
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        
+        pdf.set_font("Helvetica", "", 10)
+        for idx, item in enumerate(mc_items, len(fill_items) + 1):
+            pdf.multi_cell(0, 6, f"{idx}. {item.get('question', '')}")
+            options = item.get("options", [])
+            if options:
+                opts = "    ".join([f"{chr(97+i)}) {o}" for i, o in enumerate(options)])
+                pdf.multi_cell(0, 6, f"   {opts}")
+            pdf.ln(3)
+        pdf.ln(5)
+    
+    if match_items:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 8, f"Section C: Matching ({len(match_items)} points)", new_x="LMARGIN", new_y="NEXT")
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        
+        pdf.set_font("Helvetica", "", 10)
+        for idx, item in enumerate(match_items, 1):
+            pdf.multi_cell(0, 6, f"{idx}. {item.get('question', '')}")
+            pdf.ln(3)
+        pdf.ln(5)
+    
+    if sent_items:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 8, f"Section D: Sentence Building ({len(sent_items)} points)", new_x="LMARGIN", new_y="NEXT")
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        
+        pdf.set_font("Helvetica", "", 10)
+        for idx, item in enumerate(sent_items, 1):
+            pdf.multi_cell(0, 6, f"{idx}. {item.get('question', '')}")
+            pdf.ln(3)
+    
+    # Good luck
+    pdf.ln(10)
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 10, "GOOD LUCK!", align="C", new_x="LMARGIN", new_y="NEXT")
+    
+    return bytes(pdf.output())
+
+
+def generate_pdf_answer_key(assess_id):
+    """Generate a printable PDF answer key with answers."""
+    assess = st.session_state.assessments.get(assess_id, {})
+    items = assess.get("items", [])
+    
+    pdf = AssessmentPDF()
+    pdf.alias_nb_pages()
+    pdf.add_page()
+    
+    # Title
+    pdf.set_font("Helvetica", "B", 14)
+    pdf.cell(0, 10, "ANSWER KEY", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("Helvetica", "", 11)
+    pdf.cell(0, 8, f"{assess.get('title', 'Assessment')} - {assess.get('level', 'N/A')}", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(10)
+    
+    # Group by type
+    fill_items = [i for i in items if i.get("type") == "fill_in_blank"]
+    mc_items = [i for i in items if i.get("type") == "multiple_choice"]
+    
+    if fill_items:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 8, "Section A: Fill in the Blanks", new_x="LMARGIN", new_y="NEXT")
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        
+        pdf.set_font("Helvetica", "", 10)
+        for idx, item in enumerate(fill_items, 1):
+            pdf.cell(0, 6, f"{idx}. {item.get('answer', 'N/A')}", new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(5)
+    
+    if mc_items:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 8, "Section B: Multiple Choice", new_x="LMARGIN", new_y="NEXT")
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        
+        pdf.set_font("Helvetica", "", 10)
+        for idx, item in enumerate(mc_items, len(fill_items) + 1):
+            options = item.get("options", [])
+            answer = item.get("answer", "")
+            if answer in options:
+                opt_idx = options.index(answer)
+                pdf.cell(0, 6, f"{idx}. {chr(97+opt_idx)}) {answer}", new_x="LMARGIN", new_y="NEXT")
+            else:
+                pdf.cell(0, 6, f"{idx}. {answer}", new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(5)
+    
+    return bytes(pdf.output())
+
+
 def generate_student_report(student_id, student, grades):
     """Generate a simple text report for a student"""
     report = []
@@ -477,6 +685,21 @@ if page == "📊 Dashboard":
         st.metric("Assessments", len(st.session_state.assessments))
     with col4:
         st.metric("Grade Entries", len(st.session_state.grades))
+    
+    st.divider()
+    
+    # Usage Stats (for pilot tracking)
+    st.subheader("📈 Session Usage")
+    usage = st.session_state.usage_stats
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("Exercises Generated", usage.get("exercises_generated", 0))
+    with col2:
+        st.metric("PDFs Generated", usage.get("pdfs_generated", 0))
+    with col3:
+        st.metric("Grades Entered", usage.get("grades_entered", 0))
+    with col4:
+        st.metric("Reports Downloaded", usage.get("reports_downloaded", 0))
     
     st.divider()
     
@@ -575,6 +798,8 @@ elif page == "👨‍🎓 Students":
             if submitted:
                 if not name:
                     st.error("Name is required!")
+                elif parent_contact and not parent_contact.replace("+", "").replace("-", "").replace(" ", "").isdigit():
+                    st.error("Parent phone must be numeric!")
                 else:
                     student_id = f"STU-{len(st.session_state.students) + 1:04d}"
                     st.session_state.students[student_id] = {
@@ -589,6 +814,7 @@ elif page == "👨‍🎓 Students":
                         "medical_notes": medical_notes,
                     }
                     save_data("students.json", st.session_state.students)
+                    st.session_state.usage_stats["students_added"] += 1
                     st.success(f"Student {name} added!")
                     st.rerun()
 
@@ -779,7 +1005,7 @@ elif page == "📝 Assessments":
                 # Load topics for selected level
                 try:
                     available_topics = [t["name"] for t in get_topics_by_level(gen_level)]
-                except:
+                except Exception:
                     available_topics = []
                 gen_topics = st.multiselect(
                     "Select Topics (leave empty for all)",
@@ -814,6 +1040,7 @@ elif page == "📝 Assessments":
                             assessment = st.session_state.assessments[assess_select]
                             assessment["items"].extend(all_items)
                             save_data("assessments.json", st.session_state.assessments)
+                            st.session_state.usage_stats["exercises_generated"] += len(all_items)
                             st.success(f"Imported {len(all_items)} exercises into '{assessment.get('title')}'!")
                         elif all_items:
                             st.info(f"Generated {len(all_items)} exercises. Create an assessment first to import.")
@@ -837,12 +1064,12 @@ elif page == "📝 Assessments":
                 assess = st.session_state.assessments[assess_select]
                 st.info(f"**{assess.get('title')}** — {len(assess.get('items', []))} items — {assess.get('time_limit_minutes', 45)} min")
 
-                col1, col2 = st.columns(2)
+                col1, col2, col3, col4 = st.columns(4)
 
                 with col1:
                     txt = generate_printable_assessment(assess_select)
                     st.download_button(
-                        "📄 Download Student Version",
+                        "📄 TXT Student",
                         txt,
                         file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_student.txt",
                         mime="text/plain",
@@ -852,11 +1079,33 @@ elif page == "📝 Assessments":
                 with col2:
                     txt = generate_printable_answer_key(assess_select)
                     st.download_button(
-                        "🔑 Download Answer Key",
+                        "🔑 TXT Answer Key",
                         txt,
                         file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_answer_key.txt",
                         mime="text/plain",
                         key=f"download_answer_key_{assess_select}"
+                    )
+
+                with col3:
+                    pdf = generate_pdf_assessment(assess_select)
+                    st.download_button(
+                        "📑 PDF Student",
+                        pdf,
+                        file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_student.pdf",
+                        mime="application/pdf",
+                        key=f"download_pdf_student_{assess_select}",
+                        on_click=lambda: st.session_state.usage_stats.update({"pdfs_generated": st.session_state.usage_stats.get("pdfs_generated", 0) + 1})
+                    )
+
+                with col4:
+                    pdf = generate_pdf_answer_key(assess_select)
+                    st.download_button(
+                        "📑 PDF Answer Key",
+                        pdf,
+                        file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_answer_key.pdf",
+                        mime="application/pdf",
+                        key=f"download_pdf_key_{assess_select}",
+                        on_click=lambda: st.session_state.usage_stats.update({"pdfs_generated": st.session_state.usage_stats.get("pdfs_generated", 0) + 1})
                     )
         else:
             st.info("No assessments to print. Create one first or generate exercises.")
@@ -943,6 +1192,7 @@ elif page == "📈 Grade Book":
                         "comments": comments,
                     }
                     save_data("grades.json", st.session_state.grades)
+                    st.session_state.usage_stats["grades_entered"] += 1
                     st.success(f"Grade added for {student_name}!")
                     st.rerun()
         else:
