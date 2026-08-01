@@ -1,0 +1,42 @@
+{
+  "STU001": {
+    "name": "Ahmed Benali",
+    "name_arabic": "أحمد بنعلي",
+    "level": "1AM",
+    "class_id": "1AM-A",
+    "gender": "M",
+    "date_of_birth": "2012-03-15"
+  },
+  "STU002": {
+    "name": "Fatima Meziane",
+    "name_arabic": "فاطمة مزيان",
+    "level": "1AM",
+    "class_id": "1AM-A",
+    "gender": "F",
+    "date_of_birth": "2012-06-22"
+  },
+  "STU003": {
+    "name": "Yacine Khelifi",
+    "name_arabic": "ياسين خليفي",
+    "level": "1AM",
+    "class_id": "1AM-A",
+    "gender": "M",
+    "date_of_birth": "2012-01-10"
+  },
+  "STU004": {
+    "name": "Amira Touati",
+    "name_arabic": "أميرة توأطي",
+    "level": "2AM",
+    "class_id": "2AM-A",
+    "gender": "F",
+    "date_of_birth": "2011-09-05"
+  },
+  "STU005": {
+    "name": "Omar Hadj",
+    "name_arabic": "عمر حاج",
+    "level": "2AM",
+    "class_id": "2AM-A",
+    "gender": "M",
+    "date_of_birth": "2011-12-18"
+  }
+}

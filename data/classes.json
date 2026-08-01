@@ -1,0 +1,16 @@
+{
+  "1AM-A": {
+    "name": "1AM-A",
+    "level": "1AM",
+    "teacher": "M. Belkacem",
+    "schedule": "Mon/Wed 8-10",
+    "room": "Room 12"
+  },
+  "2AM-A": {
+    "name": "2AM-A",
+    "level": "2AM",
+    "teacher": "Mme. Bouzid",
+    "schedule": "Tue/Thu 10-12",
+    "room": "Room 15"
+  }
+}

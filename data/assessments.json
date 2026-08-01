@@ -1,0 +1,512 @@
+{
+  "ASS001": {
+    "title": "A1 Grammar Quiz",
+    "type": "grammar",
+    "level": "1AM",
+    "items": [
+      {
+        "question": "Are ___ ready for the exam?",
+        "answer": "you",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ am a student.",
+        "answer": "I",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ is a book on the desk.",
+        "answer": "It",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "My sister ___ a new dress.",
+        "answer": "has",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "My father ___ a teacher.",
+        "answer": "is",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ is my teacher.",
+        "answer": "He/She",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ is my mother. She is a doctor.",
+        "answer": "This",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "The students ___ happy today.",
+        "answer": "are",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ don't like coffee.",
+        "answer": "I",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ live in Algiers.",
+        "answer": "They",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "The school ___ at 8 a.m.",
+        "answer": "starts",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "My mother ___ the house every morning.",
+        "answer": "cleans",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "___ he ___ French at school?",
+        "answer": "Does...study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "Ali ___ to school every day.",
+        "answer": "goes",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "We ___ to the mosque on Fridays.",
+        "answer": "go",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "We ___ rice with our meals.",
+        "answer": "eat",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "___ you ___ Arabic at home?",
+        "answer": "Do...speak",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "The students ___ hard for the exam.",
+        "answer": "study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "She ___ very beautiful.",
+        "answer": "is",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "They ___ football after school.",
+        "answer": "play",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      }
+    ],
+    "total_points": 20,
+    "time_limit_minutes": 45,
+    "created_date": "2026-08-01"
+  },
+  "ASS002": {
+    "title": "A1 Vocabulary Test",
+    "type": "vocabulary",
+    "level": "1AM",
+    "items": [
+      {
+        "question": "Are ___ ready for the exam?",
+        "answer": "you",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ am a student.",
+        "answer": "I",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ is a book on the desk.",
+        "answer": "It",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "My sister ___ a new dress.",
+        "answer": "has",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "My father ___ a teacher.",
+        "answer": "is",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ is my teacher.",
+        "answer": "He/She",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ is my mother. She is a doctor.",
+        "answer": "This",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "The students ___ happy today.",
+        "answer": "are",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ don't like coffee.",
+        "answer": "I",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "___ live in Algiers.",
+        "answer": "They",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Subject Pronouns",
+        "points": 1
+      },
+      {
+        "question": "The school ___ at 8 a.m.",
+        "answer": "starts",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "My mother ___ the house every morning.",
+        "answer": "cleans",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "___ he ___ French at school?",
+        "answer": "Does...study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "Ali ___ to school every day.",
+        "answer": "goes",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "We ___ to the mosque on Fridays.",
+        "answer": "go",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "We ___ rice with our meals.",
+        "answer": "eat",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "___ you ___ Arabic at home?",
+        "answer": "Do...speak",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "The students ___ hard for the exam.",
+        "answer": "study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "She ___ very beautiful.",
+        "answer": "is",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      },
+      {
+        "question": "They ___ football after school.",
+        "answer": "play",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Present Simple",
+        "points": 1
+      }
+    ],
+    "total_points": 20,
+    "time_limit_minutes": 30,
+    "created_date": "2026-08-01"
+  },
+  "ASS003": {
+    "title": "A2 Grammar Quiz",
+    "type": "grammar",
+    "level": "2AM",
+    "items": [
+      {
+        "question": "The students ___ hard for the exam.",
+        "answer": "study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "She ___ to school every day.",
+        "answer": "goes",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "We ___ English on Mondays.",
+        "answer": "study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "He ___ not like cold weather.",
+        "answer": "does",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "___ you speak Arabic at home?",
+        "answer": "Do",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "My mother ___ breakfast at 7.",
+        "answer": "makes",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "The sun ___ in the east.",
+        "answer": "rises",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "They ___ football after school.",
+        "answer": "play",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "I ___ tea in the morning.",
+        "answer": "drink",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "The school ___ at 8 a.m.",
+        "answer": "starts",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Regular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "The students ___ hard for the exam.",
+        "answer": "study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "She ___ to school every day.",
+        "answer": "goes",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "We ___ English on Mondays.",
+        "answer": "study",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "He ___ not like cold weather.",
+        "answer": "does",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "___ you speak Arabic at home?",
+        "answer": "Do",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "My mother ___ breakfast at 7.",
+        "answer": "makes",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "The sun ___ in the east.",
+        "answer": "rises",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "They ___ football after school.",
+        "answer": "play",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "I ___ tea in the morning.",
+        "answer": "drink",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      },
+      {
+        "question": "The school ___ at 8 a.m.",
+        "answer": "starts",
+        "options": [],
+        "type": "fill_in_blank",
+        "topic": "Past Simple (Irregular Verbs)",
+        "points": 1
+      }
+    ],
+    "total_points": 20,
+    "time_limit_minutes": 45,
+    "created_date": "2026-08-01"
+  }
+}
