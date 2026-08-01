@@ -528,15 +528,24 @@ elif page == "📝 Assessments":
             
             with col2:
                 gen_count = st.number_input("Exercises per Topic", value=5, min_value=1, max_value=20)
+                # Load topics for selected level
+                try:
+                    available_topics = [t["name"] for t in get_topics_by_level(gen_level)]
+                except:
+                    available_topics = []
                 gen_topics = st.multiselect(
                     "Select Topics (leave empty for all)",
-                    [],
+                    available_topics,
                 )
             
             if st.button("🔗 Generate & Import", type="primary"):
                 with st.spinner("Generating exercises..."):
                     gen = ExerciseGenerator()
                     result = gen.generate_for_level(gen_level, gen_type, gen_count)
+                    
+                    # Filter by selected topics if any
+                    if gen_topics:
+                        result = [r for r in result if r.get("topic") in gen_topics]
                     
                     if result:
                         all_items = []
