@@ -313,7 +313,7 @@ with st.sidebar:
     # Feedback Link
     st.divider()
     st.markdown("📝 **Send Feedback**")
-    st.markdown("[Google Form](https://docs.google.com/forms/d/1FAIpQLSdPlaceholder/viewform)")
+    st.markdown("[Teacher Review Form](https://docs.google.com/forms/d/e/1FAIpQLScUDqYmwDzcNESv_Yt0tfuGaSK4_z4uHNIgL5LI_KkGfGiWKg/viewform)")
     st.caption("Help us improve the system")
 
 # --- Constants ---
