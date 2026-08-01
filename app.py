@@ -15,6 +15,20 @@ import sys
 import io
 from datetime import datetime, date
 
+# --- Demo Data ---
+DEMO_STUDENTS = {
+    "STU001": {"name": "Ahmed Benali", "name_arabic": "أحمد بنعلي", "level": "1AM", "class_id": "1AM-A", "gender": "M", "date_of_birth": "2012-03-15"},
+    "STU002": {"name": "Fatima Meziane", "name_arabic": "فاطمة مزيان", "level": "1AM", "class_id": "1AM-A", "gender": "F", "date_of_birth": "2012-06-22"},
+    "STU003": {"name": "Yacine Khelifi", "name_arabic": "ياسين خليفي", "level": "1AM", "class_id": "1AM-A", "gender": "M", "date_of_birth": "2012-01-10"},
+    "STU004": {"name": "Amira Touati", "name_arabic": "أميرة توأطي", "level": "2AM", "class_id": "2AM-A", "gender": "F", "date_of_birth": "2011-09-05"},
+    "STU005": {"name": "Omar Hadj", "name_arabic": "عمر حاج", "level": "2AM", "class_id": "2AM-A", "gender": "M", "date_of_birth": "2011-12-18"},
+}
+
+DEMO_CLASSES = {
+    "1AM-A": {"name": "1AM-A", "level": "1AM", "teacher": "M. Belkacem", "schedule": "Mon/Wed 8-10", "room": "Room 12"},
+    "2AM-A": {"name": "2AM-A", "level": "2AM", "teacher": "Mme. Bouzid", "schedule": "Tue/Thu 10-12", "room": "Room 15"},
+}
+
 # --- Page Config ---
 st.set_page_config(
     page_title="SIS - Student Information System",
