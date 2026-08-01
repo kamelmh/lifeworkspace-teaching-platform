@@ -59,6 +59,18 @@ for key, filename in [("students", "students.json"), ("classes", "classes.json")
     if key not in st.session_state:
         st.session_state[key] = load_data(filename)
 
+def auto_populate_demo_data():
+    """Load demo data if no data files exist."""
+    if not st.session_state.students:
+        st.session_state.students = DEMO_STUDENTS.copy()
+        save_data("students.json", st.session_state.students)
+    if not st.session_state.classes:
+        st.session_state.classes = DEMO_CLASSES.copy()
+        save_data("classes.json", st.session_state.classes)
+
+# Auto-populate demo data on first login
+auto_populate_demo_data()
+
 # --- Auth System ---
 def check_login(username, password):
     user = st.session_state.users.get(username)
