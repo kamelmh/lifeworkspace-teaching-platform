@@ -75,14 +75,14 @@ def generate_demo_assessments():
             from exercise_generator import ExerciseGenerator
             gen = ExerciseGenerator()
 
-            # A1 Grammar Quiz
+            # A1 Grammar Quiz (fill_in_blank + multiple_choice)
             a1_grammar = gen.generate_for_level("A1", "fill_in_blank", 10)
             a1_mc = gen.generate_for_level("A1", "multiple_choice", 10)
-            a1_items = []
+            a1_grammar_items = []
             for r in (a1_grammar + a1_mc):
                 if "error" not in r:
                     for ex in r.get("exercises", []):
-                        a1_items.append({
+                        a1_grammar_items.append({
                             "question": ex.get("question", ex.get("sentence", "")),
                             "answer": ex.get("answer", ""),
                             "options": ex.get("options", []),
@@ -91,7 +91,23 @@ def generate_demo_assessments():
                             "points": 1,
                         })
 
-            # A2 Grammar Quiz
+            # A1 Vocabulary Test (matching + sentence_building)
+            a1_vocab_match = gen.generate_for_level("A1", "matching", 10)
+            a1_vocab_sent = gen.generate_for_level("A1", "sentence_building", 10)
+            a1_vocab_items = []
+            for r in (a1_vocab_match + a1_vocab_sent):
+                if "error" not in r:
+                    for ex in r.get("exercises", []):
+                        a1_vocab_items.append({
+                            "question": ex.get("question", ex.get("sentence", "")),
+                            "answer": ex.get("answer", ""),
+                            "options": ex.get("options", []),
+                            "type": ex.get("type", "matching"),
+                            "topic": r.get("topic", ""),
+                            "points": 1,
+                        })
+
+            # A2 Grammar Quiz (fill_in_blank + multiple_choice)
             a2_grammar = gen.generate_for_level("A2", "fill_in_blank", 10)
             a2_mc = gen.generate_for_level("A2", "multiple_choice", 10)
             a2_items = []
@@ -112,7 +128,7 @@ def generate_demo_assessments():
                     "title": "A1 Grammar Quiz",
                     "type": "grammar",
                     "level": "1AM",
-                    "items": a1_items[:20],
+                    "items": a1_grammar_items[:20],
                     "total_points": 20,
                     "time_limit_minutes": 45,
                     "created_date": str(date.today()),
@@ -121,7 +137,7 @@ def generate_demo_assessments():
                     "title": "A1 Vocabulary Test",
                     "type": "vocabulary",
                     "level": "1AM",
-                    "items": a1_items[:20],
+                    "items": a1_vocab_items[:20],
                     "total_points": 20,
                     "time_limit_minutes": 30,
                     "created_date": str(date.today()),
@@ -830,7 +846,7 @@ elif page == "📝 Assessments":
                         txt,
                         file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_student.txt",
                         mime="text/plain",
-                        key="download_student"
+                        key=f"download_student_{assess_select}"
                     )
 
                 with col2:
@@ -840,7 +856,7 @@ elif page == "📝 Assessments":
                         txt,
                         file_name=f"{assess.get('title', 'assessment').replace(' ', '_')}_answer_key.txt",
                         mime="text/plain",
-                        key="download_answer_key"
+                        key=f"download_answer_key_{assess_select}"
                     )
         else:
             st.info("No assessments to print. Create one first or generate exercises.")
